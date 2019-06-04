@@ -17,8 +17,9 @@
 import UIKit
 import AVFoundation
 import Vision
+import CoreLocation
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, CLLocationManagerDelegate {
 
     // MARK: - IBOutlets
     
@@ -32,6 +33,8 @@ class CameraViewController: UIViewController {
     // MARK: - Variable Declarations
     
     let coreMLModel = Model().model
+    
+    var locationManager: CLLocationManager?
     
     let photoOutput = AVCapturePhotoOutput()
     lazy var captureSession: AVCaptureSession? = {
@@ -65,6 +68,10 @@ class CameraViewController: UIViewController {
         captureSession?.startRunning()
         focusView.isHidden = false
         resetUI()
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +85,6 @@ class CameraViewController: UIViewController {
     // MARK: - Image Classification
     
     func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
-        print("start classifyImage")
 
         guard let croppedImage = cropToCenter(image: image, targetSize: CGSize(width: 224, height: 224)) else {
             return
@@ -107,7 +113,6 @@ class CameraViewController: UIViewController {
     }
     
     func cropToCenter(image: UIImage, targetSize: CGSize) -> UIImage? {
-        print("start cropToCenter")
         guard let cgImage = image.cgImage else {
             return nil
         }
@@ -138,12 +143,10 @@ class CameraViewController: UIViewController {
     }
     
     func dismissResults() {
-        print("start dismissResults")
         push(results: [], position: .closed)
     }
     
     func push(results: [VNClassificationObservation], position: PulleyPosition = .partiallyRevealed) {
-        print("start push")
         guard let drawer = pulleyViewController?.drawerContentViewController as? ResultsTableViewController else {
             return
         }
@@ -153,7 +156,6 @@ class CameraViewController: UIViewController {
     }
     
     func showResultsUI(for image: UIImage) {
-        print("start showResultsUI")
         imageView.image = image
         imageView.isHidden = false
         closeButton.isHidden = false
@@ -162,7 +164,6 @@ class CameraViewController: UIViewController {
     }
     
     func resetUI() {
-        print("start resetUI")
         if captureSession != nil {
             imageView.isHidden = true
             captureButton.isHidden = false
@@ -182,7 +183,6 @@ class CameraViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func capturePhoto() {
-        print("start capturePhoto")
         photoOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
     
