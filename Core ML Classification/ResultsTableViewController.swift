@@ -67,7 +67,6 @@ class ResultsTableViewController: UIViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
     }
-    
 }
 
 // MARK: - PulleyDrawerViewControllerDelegate
@@ -112,7 +111,7 @@ extension ResultsTableViewController: PulleyDrawerViewControllerDelegate {
 }
 
 // MARK: - UITableViewDataSource
-
+//TODO:  Fix  random  numbers  here
 extension ResultsTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(classifications.count > 1){
@@ -132,19 +131,22 @@ extension ResultsTableViewController: UITableViewDataSource {
     //temporary function to display what it will  looklikewhen  combinedwith the mta api
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDefault", for: indexPath) as! ResultTableViewCell
-
-        if(indexPath.item == 0)
-        {
-            let score = classifications[indexPath.item].confidence
         
-            cell.label.text = classifications[indexPath.item].identifier
-            cell.score.text = String(format: "%.2f", score)
+        if(indexPath.item == 0){
+            //let score = classifications[indexPath.item].confidence
+            cell.label.text = classifications[indexPath.item].identifier.capitalized
+            cell.score.text = "" //String(format: "%.2f", score)
+            cell.backgroundColor = UIColor.lightGray
         }
         else {
-            cell.label.text = "Arriving"
+            //TODO: Change Color based on on time/delayed
+            let time  = indexPath.item*2
+            cell.label.text = "On Time"
             cell.score.text  = String(indexPath.item*2) + "min"
+            if(time <= 2) {
+                cell.backgroundColor = UIColor.green.withAlphaComponent(0.2)
+            }
         }
-        
         return cell
     }
 }
