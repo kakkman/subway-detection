@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIViewController {
-    public var pulleyViewController: PulleyViewController? {
+    var pulleyViewController: PulleyViewController? {
         var parentVC = parent
         while parentVC != nil {
             if let pulleyViewController = parentVC as? PulleyViewController {
