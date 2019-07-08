@@ -20,6 +20,8 @@
 		2DBEDF461FD20680003F17C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEDF451FD20672003F17C8 /* Main.storyboard */; };
 		2DC5F13D1FD609050063B2D5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5F13C1FD609050063B2D5 /* ResultsTableViewController.swift */; };
 		2DC5F13F1FD6093B0063B2D5 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5F13E1FD6093B0063B2D5 /* ResultsTableViewCell.swift */; };
+		D59C2E1522D38124001C5BD6 /* stations.csv in Resources */ = {isa = PBXBuildFile; fileRef = D59C2E1322D38124001C5BD6 /* stations.csv */; };
+		D59C2E1722D38EC7001C5BD6 /* SwiftCSV in Resources */ = {isa = PBXBuildFile; fileRef = D59C2E1622D38EC7001C5BD6 /* SwiftCSV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		2DBEDF451FD20672003F17C8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2DC5F13C1FD609050063B2D5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		2DC5F13E1FD6093B0063B2D5 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
+		D59C2E1322D38124001C5BD6 /* stations.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = stations.csv; path = subway_info/stations.csv; sourceTree = "<group>"; };
+		D59C2E1622D38EC7001C5BD6 /* SwiftCSV */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftCSV; path = "Core ML Classification/SwiftCSV"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		2D7DF31E204F4D1E00CC26D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D59C2E1322D38124001C5BD6 /* stations.csv */,
 				2D7870C61FE1D3A30018BFE9 /* Pulley Framework */,
 			);
 			path = "Supporting Files";
@@ -110,6 +115,7 @@
 		2DBDD2931FCF7FAE004A6DC1 /* Core ML Classification */ = {
 			isa = PBXGroup;
 			children = (
+				D59C2E1622D38EC7001C5BD6 /* SwiftCSV */,
 				2D7DF31E204F4D1E00CC26D7 /* Supporting Files */,
 				234F030D2210CABE000E9E19 /* model_ios */,
 				2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */,
@@ -186,9 +192,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59C2E1722D38EC7001C5BD6 /* SwiftCSV in Resources */,
 				2DBEDF461FD20680003F17C8 /* Main.storyboard in Resources */,
 				2DBDD2A21FCF7FAE004A6DC1 /* LaunchScreen.storyboard in Resources */,
 				2DBDD29F1FCF7FAE004A6DC1 /* Assets.xcassets in Resources */,
+				D59C2E1522D38124001C5BD6 /* stations.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
